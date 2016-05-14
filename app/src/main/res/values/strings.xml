@@ -1,15 +1,41 @@
 <resources>
 
     <string name="app_name">Nursify</string>
+    <string name="sender_id">1097169929226</string>
+
+    <string name="lastname">Last name</string>
+    <string name="firstname">First name</string>
+    <string name="email">Email</string>
+    <string name="qualifications">Qualifications</string>
+    <string name="Register">Register</string>
+
+    <string name="action_call_ambulance">Call Ambulance</string>
+    <string name="ambulance_number">166</string>
+
+    <string name="help_message">A patient needs your help</string>
+    <string name="patient_location">Patient is here</string>
+    <string name="help_canceled">The patient is OK</string>
+    <string name="time_asked">This patient asked for help at</string>
+
+    <string name="login">Login</string>
+
+    <string name="member_message">Register or Login to receive notifications when someone needs your help!</string>
+
+    <string name="agree">I agree to be a volunteer at Nursify.</string>
+
+    <string name="no_valid_first_name">Please enter your first name.</string>
+    <string name="no_valid_last_name">Please enter your last name.</string>
+    <string name="no_valid_email">Please enter a valid email address.</string>
+
+    <string name="I_am_ok">I \'m OK</string>
+    <string name="help">HELP</string>
+
+    <string name="cancel_message">Are you sure that you are ok?</string>
+
     <string name="add_textbox_hint">Add a ToDo item</string>
     <string name="add_button_text">Add</string>
     <string name="service_title">Mobile Apps </string>
     <string name="menu_refresh">Refresh</string>
     <string name="checkbox_text">Item Text</string>
-    <string name="help">HELP</string>
-    <string name="I_am_ok">I\'m ok</string>
-    <string name="Register">Register</string>
-    <string name="login">Login</string>
-    <string name="member_message">Register or Login to receive notifications when someone needs your help!</string>
 
 </resources>
