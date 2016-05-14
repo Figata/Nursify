@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1097169929226",
+    "project_id": "nursify-1306"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097169929226:android:d1d3b341fefa5156",
+        "android_client_info": {
+          "package_name": "com.example.nursify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDh4FGpPaRpWW_8RB71ZsX30-4ef0BdjA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
