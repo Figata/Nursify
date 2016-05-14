@@ -1,7 +1,12 @@
 package com.example.nursify.model;
 
+
+import java.sql.Date;
+
 /**
- * Created by vassilis on 5/14/16.
+ * Created by vassilis on 5/10/16.
+ * <p/>
+ * Represents an item in Incident table
  */
 public class Incident {
     @com.google.gson.annotations.SerializedName("id")
