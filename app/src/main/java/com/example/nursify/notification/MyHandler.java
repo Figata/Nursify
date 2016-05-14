@@ -1,4 +1,4 @@
-package com.example.nursify;
+package com.example.nursify.notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,6 +9,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.nursify.R;
+import com.example.nursify.view.MainActivity;
 import com.microsoft.windowsazure.notifications.NotificationsHandler;
 
 public class MyHandler extends NotificationsHandler {
@@ -22,7 +24,7 @@ public class MyHandler extends NotificationsHandler {
 
             protected Void doInBackground(Void... params) {
                 try {
-                    ToDoActivity.mClient.getPush().register(gcmRegistrationId);
+                    MainActivity.mClient.getPush().register(gcmRegistrationId);
                     return null;
                 } catch (Exception e) {
                     // handle error
@@ -39,7 +41,7 @@ public class MyHandler extends NotificationsHandler {
         PendingIntent contentIntent = PendingIntent.getActivity(
                 context,
                 0, // requestCode
-                new Intent(context, ToDoActivity.class),
+                new Intent(context, MainActivity.class),
                 0
         ); // flags
 
