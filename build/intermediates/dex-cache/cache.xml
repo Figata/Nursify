@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/home/vassilis/AndroidStudioProjects/Nursify/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="9d46c3ecb7396d887e8f40e2bd608b3b89076c4f">
-        <dex dex="/home/vassilis/AndroidStudioProjects/Nursify/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_bd6a3fbb3d3d5c0f4a17fb12f5621a5b8b17f402/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

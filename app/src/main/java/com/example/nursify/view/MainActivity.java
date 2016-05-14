@@ -2,8 +2,10 @@ package com.example.nursify.view;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -101,6 +104,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     .addApi(LocationServices.API)
                     .build();
         }
+        savePatientPhone();
+    }
+
+    private void savePatientPhone() {
+        SharedPreferences preferences = getSharedPreferences("patient_data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("phone", getPatientPhone()).apply();
+    }
+
+    private String getPatientPhone() {
+        TelephonyManager tMgr = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+        return tMgr.getLine1Number() != null ? tMgr.getLine1Number() : tMgr.getSimSerialNumber();
     }
 
     @Override
@@ -157,21 +172,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
     private void cancelIncident() {
-        // Insert the new item
+        // cancel the new item
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
                     removeItemInTable(item);
+                    item = null;
                 } catch (final Exception e) {
-                    Log.e("error", e.getMessage());
-                    e.printStackTrace();
-                    //createAndShowDialogFromTask(e, "Error");
+                    createAndShowDialogFromTask(e, "Error");
                 }
                 return null;
             }
         };
-
         runAsyncTask(task);
     }
 
