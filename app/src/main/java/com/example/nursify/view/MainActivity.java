@@ -15,11 +15,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.nursify.model.DeletedIncident;
 import com.example.nursify.notification.MyHandler;
 import com.example.nursify.R;
@@ -104,18 +106,29 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     .addApi(LocationServices.API)
                     .build();
         }
-        savePatientPhone();
+        savePhone();
     }
 
-    private void savePatientPhone() {
+    private void savePatientPhone(String phone) {
         SharedPreferences preferences = getSharedPreferences("patient_data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("phone", getPatientPhone()).apply();
+
+        if (getPatientPhone() == null || getPatientPhone().equals(""))
+            editor.putString("phone", phone).apply();
+        else
+            editor.putString("phone", getPatientPhone()).apply();
     }
 
     private String getPatientPhone() {
         TelephonyManager tMgr = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
         return tMgr.getLine1Number() != null ? tMgr.getLine1Number() : tMgr.getSimSerialNumber();
+    }
+
+    private void savePhone() {
+        if (getPatientPhone() == null || getPatientPhone().equals(""))
+            showPhoneDialog();
+        else
+            savePatientPhone(getPatientPhone());
     }
 
     @Override
@@ -202,6 +215,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         adb.setNegativeButton(android.R.string.no, null);
 
         Dialog d = adb.show();
+    }
+
+    private void showPhoneDialog() {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
+                .title(getString(R.string.add_phone))
+                .inputType(InputType.TYPE_CLASS_PHONE)
+                .inputRange(10, 10)
+                .input(getString(R.string.add_your_phone), "", false, new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(MaterialDialog dialog, CharSequence input) {
+                        savePatientPhone(input.toString());
+                    }
+                });
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            builder.widgetColor(getResources().getColor(R.color.ColorPrimaryDark, getTheme()));
+        } else {
+            builder.widgetColor(getResources().getColor(R.color.ColorPrimaryDark));
+        }
+        builder.show();
     }
 
     public void register(View v) {

@@ -34,4 +34,7 @@
 
     <string name="call">Call</string>
 
+    <string name="add_phone">Add your phone number</string>
+    <string name="add_your_phone">Type your number here</string>
+
 </resources>

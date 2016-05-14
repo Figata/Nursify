@@ -8,4 +8,5 @@
 
     <color name="disabled">#cccccc</color>
     <color name="disabledTextColor">#898989</color>
+    <color name="ColorPrimaryDark">#EDEDED</color>
 </resources>
